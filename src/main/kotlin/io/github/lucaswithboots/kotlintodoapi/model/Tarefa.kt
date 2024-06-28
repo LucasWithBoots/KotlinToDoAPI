@@ -6,5 +6,5 @@ data class Tarefa(
     val id: Long,
     val titulo: String,
     val descricao: String,
-    val dataDeCriacao: LocalDateTime
+    val dataDeCriacao: LocalDateTime = LocalDateTime.now()
 )

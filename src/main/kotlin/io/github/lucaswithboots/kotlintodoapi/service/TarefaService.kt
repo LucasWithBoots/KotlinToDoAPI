@@ -1,8 +1,8 @@
 package io.github.lucaswithboots.kotlintodoapi.service
 
+import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
 
 @Service
 class TarefaService(
@@ -13,14 +13,12 @@ class TarefaService(
             Tarefa(
                 id = 1,
                 titulo = "Titulo teste",
-                descricao = "Descrição teste",
-                dataDeCriacao = LocalDateTime.now()
+                descricao = "Descrição teste"
             ),
             Tarefa(
                 id = 2,
                 titulo = "Titulo teste",
-                descricao = "Descrição teste",
-                dataDeCriacao = LocalDateTime.now()
+                descricao = "Descrição teste"
             )
         )
     }
@@ -31,6 +29,16 @@ class TarefaService(
 
     fun listarPorId(id: Long): Tarefa? {
         return tarefas.find { it.id == id }
+    }
+
+    fun criarTarefa(tarefaDTO: TarefaDTO) {
+        tarefas = tarefas.plus(
+            Tarefa(
+                id = tarefas.size.toLong() + 1,
+                titulo = tarefaDTO.titulo,
+                descricao = tarefaDTO.descricao
+            )
+        )
     }
 
 }

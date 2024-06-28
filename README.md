@@ -18,3 +18,11 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 - Spring Web
 - Spring Boot DevTools
 - Validation
+
+## Endpoints
+
+| Método HTTP | Endpoint     | Função                               |
+|-------------|--------------|--------------------------------------|
+| GET         | /tarefa      | Retorna todas as tarefas             |
+| GET         | /tarefa/{id} | Retorna uma tarefa específica por ID |
+| POST        | /tarefa      | Cria uma nova tarefa                 |

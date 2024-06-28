@@ -1,11 +1,9 @@
 package io.github.lucaswithboots.kotlintodoapi.controller
 
+import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import io.github.lucaswithboots.kotlintodoapi.service.TarefaService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/tarefa")
@@ -22,6 +20,11 @@ class TarefaController(
     @GetMapping("/{id}")
     fun listarPorId(@PathVariable id: Long): Tarefa? {
         return service.listarPorId(id)
+    }
+
+    @PostMapping
+    fun criarTarefa(@RequestBody tarefaDTO: TarefaDTO) {
+        service.criarTarefa(tarefaDTO)
     }
 
 }
