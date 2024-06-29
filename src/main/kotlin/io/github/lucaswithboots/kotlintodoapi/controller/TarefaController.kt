@@ -16,7 +16,6 @@ class TarefaController(
         return service.listar()
     }
 
-
     @GetMapping("/{id}")
     fun listarPorId(@PathVariable id: Long): Tarefa? {
         return service.listarPorId(id)

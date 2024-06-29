@@ -6,22 +6,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class TarefaService(
-    private var tarefas: List<Tarefa> = listOf()
+    private var tarefas: List<Tarefa> = listOf(),
+    private val usuarioService: UsuarioService
 ) {
-    init {
-        tarefas = listOf(
-            Tarefa(
-                id = 1,
-                titulo = "Titulo teste",
-                descricao = "Descrição teste"
-            ),
-            Tarefa(
-                id = 2,
-                titulo = "Titulo teste",
-                descricao = "Descrição teste"
-            )
-        )
-    }
 
     fun listar(): List<Tarefa> {
         return tarefas
@@ -32,11 +19,15 @@ class TarefaService(
     }
 
     fun criarTarefa(tarefaDTO: TarefaDTO) {
+
+        val usuario = usuarioService.listarPorId(tarefaDTO.idUsuario)
+
         tarefas = tarefas.plus(
             Tarefa(
                 id = tarefas.size.toLong() + 1,
                 titulo = tarefaDTO.titulo,
-                descricao = tarefaDTO.descricao
+                descricao = tarefaDTO.descricao,
+                usuario = usuario
             )
         )
     }
