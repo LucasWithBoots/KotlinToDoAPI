@@ -10,7 +10,7 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 - [X] Criar Tarefa
 - [X] Listar Tarefas
 - [X] Buscar Tarefa por ID
-- [ ] Atualizar Tarefa
+- [X] Atualizar Tarefa
 - [X] Excluir Tarefa
 
 ## Dependências
@@ -20,6 +20,10 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 - Validation
 
 ## Endpoints
+
+> Todos os métodos já estão implementados no Postman. Importe essa API 🌐
+>
+> https://bit.ly/3xDdiMN
 
 | Método HTTP | Endpoint      | Função                               |
 |-------------|---------------|--------------------------------------|
