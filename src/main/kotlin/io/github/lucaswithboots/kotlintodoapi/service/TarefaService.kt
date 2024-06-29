@@ -32,4 +32,12 @@ class TarefaService(
         )
     }
 
+    fun deletar(id: Long) {
+        val tarefa = tarefas.find { it.id == id }
+
+        if (tarefa != null) {
+            tarefas = tarefas.minus(tarefa)
+        }
+    }
+
 }

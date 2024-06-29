@@ -26,4 +26,12 @@ class UsuarioService(
         )
     }
 
+    fun deletar(id: Long) {
+        val usuario = usuarios.find { it.id == id }
+
+        if (usuario != null) {
+            usuarios = usuarios.minus(usuario)
+        }
+    }
+
 }

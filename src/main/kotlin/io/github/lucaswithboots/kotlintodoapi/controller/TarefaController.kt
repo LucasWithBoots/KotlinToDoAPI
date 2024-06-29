@@ -26,4 +26,8 @@ class TarefaController(
         service.criar(tarefaDTO)
     }
 
+    @DeleteMapping("/{id}")
+    fun deletar(@PathVariable id: Long) {
+        service.deletar(id)
+    }
 }

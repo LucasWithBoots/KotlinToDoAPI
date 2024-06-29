@@ -26,4 +26,9 @@ class UsuarioControler(
         service.criar(usuarioDTO)
     }
 
+    @DeleteMapping("/{id}")
+    fun deletar(@PathVariable id: Long) {
+        service.deletar(id)
+    }
+
 }
