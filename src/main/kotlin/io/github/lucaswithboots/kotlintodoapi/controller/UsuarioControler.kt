@@ -1,5 +1,6 @@
 package io.github.lucaswithboots.kotlintodoapi.controller
 
+import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarUsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.UsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Usuario
 import io.github.lucaswithboots.kotlintodoapi.service.UsuarioService
@@ -24,6 +25,11 @@ class UsuarioControler(
     @PostMapping
     fun criar(@RequestBody usuarioDTO: UsuarioDTO) {
         service.criar(usuarioDTO)
+    }
+
+    @PutMapping()
+    fun atualizar(@RequestBody atualizarUsuarioDTO: AtualizarUsuarioDTO) {
+        service.atualizar(atualizarUsuarioDTO);
     }
 
     @DeleteMapping("/{id}")

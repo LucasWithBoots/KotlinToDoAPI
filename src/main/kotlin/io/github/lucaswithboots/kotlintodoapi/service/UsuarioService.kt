@@ -1,5 +1,6 @@
 package io.github.lucaswithboots.kotlintodoapi.service
 
+import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarUsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.UsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Usuario
 import org.springframework.stereotype.Service
@@ -26,6 +27,20 @@ class UsuarioService(
         )
     }
 
+    fun atualizar(atualizarUsuarioDTO: AtualizarUsuarioDTO) {
+        val usuario = usuarios.find { it.id == atualizarUsuarioDTO.id }
+
+        val usuarioAtualizado = Usuario(
+            id = atualizarUsuarioDTO.id,
+            nome = atualizarUsuarioDTO.nome,
+            email = atualizarUsuarioDTO.email
+        )
+
+        if (usuario != null) {
+            usuarios = usuarios.minus(usuario).plus(usuarioAtualizado)
+        }
+    }
+
     fun deletar(id: Long) {
         val usuario = usuarios.find { it.id == id }
 
@@ -33,5 +48,6 @@ class UsuarioService(
             usuarios = usuarios.minus(usuario)
         }
     }
+
 
 }
