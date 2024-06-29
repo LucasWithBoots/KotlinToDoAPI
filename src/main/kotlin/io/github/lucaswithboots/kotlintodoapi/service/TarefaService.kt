@@ -18,7 +18,7 @@ class TarefaService(
         return tarefas.find { it.id == id }
     }
 
-    fun criarTarefa(tarefaDTO: TarefaDTO) {
+    fun criar(tarefaDTO: TarefaDTO) {
 
         val usuario = usuarioService.listarPorId(tarefaDTO.idUsuario)
 

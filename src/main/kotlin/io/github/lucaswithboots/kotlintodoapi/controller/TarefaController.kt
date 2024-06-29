@@ -22,8 +22,8 @@ class TarefaController(
     }
 
     @PostMapping
-    fun criarTarefa(@RequestBody tarefaDTO: TarefaDTO) {
-        service.criarTarefa(tarefaDTO)
+    fun criar(@RequestBody tarefaDTO: TarefaDTO) {
+        service.criar(tarefaDTO)
     }
 
 }
