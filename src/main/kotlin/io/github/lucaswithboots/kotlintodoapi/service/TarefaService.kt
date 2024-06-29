@@ -1,7 +1,9 @@
 package io.github.lucaswithboots.kotlintodoapi.service
 
+import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarStatusTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
+import io.github.lucaswithboots.kotlintodoapi.model.StatusTarefa
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import org.springframework.stereotype.Service
 
@@ -28,7 +30,8 @@ class TarefaService(
                 id = tarefas.size.toLong() + 1,
                 titulo = tarefaDTO.titulo,
                 descricao = tarefaDTO.descricao,
-                usuario = usuario
+                usuario = usuario,
+                status = StatusTarefa.PENDENTE
             )
         )
     }
@@ -44,6 +47,22 @@ class TarefaService(
         )
 
         if (tarefa != null) {
+            tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
+        }
+    }
+
+    fun atualizar(atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
+        val tarefa = tarefas.find { it.id == atualizarStatusTarefaDTO.id }
+
+        if (tarefa != null) {
+            val tarefaAtualizada = Tarefa(
+                id = atualizarStatusTarefaDTO.id,
+                titulo = tarefa.titulo,
+                descricao = tarefa.descricao,
+                usuario = tarefa.usuario,
+                status = atualizarStatusTarefaDTO.status
+            )
+
             tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
         }
     }

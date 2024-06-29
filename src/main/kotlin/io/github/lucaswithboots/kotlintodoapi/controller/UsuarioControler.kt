@@ -29,7 +29,7 @@ class UsuarioControler(
 
     @PutMapping()
     fun atualizar(@RequestBody atualizarUsuarioDTO: AtualizarUsuarioDTO) {
-        service.atualizar(atualizarUsuarioDTO);
+        service.atualizar(atualizarUsuarioDTO)
     }
 
     @DeleteMapping("/{id}")
