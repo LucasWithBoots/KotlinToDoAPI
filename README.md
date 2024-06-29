@@ -11,7 +11,7 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 - [X] Listar Tarefas
 - [X] Buscar Tarefa por ID
 - [ ] Atualizar Tarefa
-- [ ] Excluir Tarefa
+- [X] Excluir Tarefa
 
 ## Dependências
 
