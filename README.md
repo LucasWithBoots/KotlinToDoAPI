@@ -7,7 +7,7 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 
 ## Funcionalidades
 
-- [ ] Criar Tarefa
+- [X] Criar Tarefa
 - [X] Listar Tarefas
 - [X] Buscar Tarefa por ID
 - [ ] Atualizar Tarefa
@@ -21,8 +21,36 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 
 ## Endpoints
 
-| Método HTTP | Endpoint     | Função                               |
-|-------------|--------------|--------------------------------------|
-| GET         | /tarefa      | Retorna todas as tarefas             |
-| GET         | /tarefa/{id} | Retorna uma tarefa específica por ID |
-| POST        | /tarefa      | Cria uma nova tarefa                 |
+| Método HTTP | Endpoint      | Função                               |
+|-------------|---------------|--------------------------------------|
+| GET         | /tarefa       | Retorna todas as tarefas             |
+| GET         | /tarefa/{id}  | Retorna uma tarefa específica por ID |
+| GET         | /usuario      | Retorna todos os usuários            |
+| GET         | /usuario/{id} | Retorna um usuário específico por ID |
+| POST        | /tarefa       | Cria uma nova tarefa                 |
+
+### Informações Importantes
+
+#### POST
+
+- Ao utilizar o método POST lembre-se de utilizar os headers Key e Value sendo respectivamente *Content-Type* e
+  *application/json*
+
+![img.png](assets/images/headersPost.png)
+
+- O modelo do JSON para o método POST deve ser o seguinte:
+
+```json
+{
+  "idUsuario": 1,
+  "titulo": "Tarefa 1",
+  "descricao": "Corrigir código"
+}
+```
+
+```json
+{
+  "nome": "Fulano de Tal",
+  "email": "fulano@email.com"
+}
+```
