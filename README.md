@@ -56,3 +56,15 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
   "email": "fulano@email.com"
 }
 ```
+
+#### PUT
+
+- O modelo do JSON para o método PUT deve ser o seguinte:
+
+```json
+{
+  "id": 1,
+  "titulo": "Novo titulo",
+  "descricao": "Nova Descrição"
+}
+```

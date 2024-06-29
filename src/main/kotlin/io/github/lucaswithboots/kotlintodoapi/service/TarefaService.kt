@@ -1,5 +1,6 @@
 package io.github.lucaswithboots.kotlintodoapi.service
 
+import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import org.springframework.stereotype.Service
@@ -30,6 +31,21 @@ class TarefaService(
                 usuario = usuario
             )
         )
+    }
+
+    fun atualizar(atualizarTarefaDTO: AtualizarTarefaDTO) {
+        val tarefa = tarefas.find { it.id == atualizarTarefaDTO.id }
+
+        val tarefaAtualizada = Tarefa(
+            id = atualizarTarefaDTO.id,
+            titulo = atualizarTarefaDTO.titulo,
+            descricao = atualizarTarefaDTO.descricao,
+            usuario = tarefa?.usuario
+        )
+
+        if (tarefa != null) {
+            tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
+        }
     }
 
     fun deletar(id: Long) {

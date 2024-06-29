@@ -1,5 +1,6 @@
 package io.github.lucaswithboots.kotlintodoapi.controller
 
+import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import io.github.lucaswithboots.kotlintodoapi.service.TarefaService
@@ -24,6 +25,11 @@ class TarefaController(
     @PostMapping
     fun criar(@RequestBody tarefaDTO: TarefaDTO) {
         service.criar(tarefaDTO)
+    }
+
+    @PutMapping
+    fun atualizar(@RequestBody atualizarTarefaDTO: AtualizarTarefaDTO) {
+        service.atualizar(atualizarTarefaDTO)
     }
 
     @DeleteMapping("/{id}")
