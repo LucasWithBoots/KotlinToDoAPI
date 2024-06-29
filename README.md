@@ -22,7 +22,6 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 ## Endpoints
 
 > Todos os métodos já estão implementados no Postman. Importe essa API 🌐
->
 > https://bit.ly/3xDdiMN
 
 | Método HTTP | Endpoint      | Função                               |
