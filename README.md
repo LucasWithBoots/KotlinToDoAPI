@@ -28,6 +28,8 @@ objetivo de colocar em prática os conceitos que aprendi. 💪
 | GET         | /usuario      | Retorna todos os usuários            |
 | GET         | /usuario/{id} | Retorna um usuário específico por ID |
 | POST        | /tarefa       | Cria uma nova tarefa                 |
+| DELETE      | /tarefa/{id}  | Delete uma tarefa específica por ID  |
+| DELETE      | /usuario/{id} | Delete um usuário específico por ID  |
 
 ### Informações Importantes
 
