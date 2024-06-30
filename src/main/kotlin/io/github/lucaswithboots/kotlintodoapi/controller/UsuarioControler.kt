@@ -4,6 +4,7 @@ import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarUsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.UsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Usuario
 import io.github.lucaswithboots.kotlintodoapi.service.UsuarioService
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -23,7 +24,7 @@ class UsuarioControler(
     }
 
     @PostMapping
-    fun criar(@RequestBody usuarioDTO: UsuarioDTO) {
+    fun criar(@RequestBody @Valid usuarioDTO: UsuarioDTO) {
         service.criar(usuarioDTO)
     }
 

@@ -5,6 +5,7 @@ import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import io.github.lucaswithboots.kotlintodoapi.service.TarefaService
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -24,17 +25,17 @@ class TarefaController(
     }
 
     @PostMapping
-    fun criar(@RequestBody tarefaDTO: TarefaDTO) {
+    fun criar(@RequestBody @Valid tarefaDTO: TarefaDTO) {
         service.criar(tarefaDTO)
     }
 
     @PutMapping
-    fun atualizar(@RequestBody atualizarTarefaDTO: AtualizarTarefaDTO) {
+    fun atualizar(@RequestBody @Valid atualizarTarefaDTO: AtualizarTarefaDTO) {
         service.atualizar(atualizarTarefaDTO)
     }
 
     @PutMapping("/status")
-    fun atualizar(@RequestBody atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
+    fun atualizar(@RequestBody @Valid atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
         service.atualizar(atualizarStatusTarefaDTO)
     }
 

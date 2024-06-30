@@ -3,6 +3,7 @@ package io.github.lucaswithboots.kotlintodoapi.service
 import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarStatusTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
+import io.github.lucaswithboots.kotlintodoapi.exception.ResourceNotFoundException
 import io.github.lucaswithboots.kotlintodoapi.model.StatusTarefa
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import org.springframework.stereotype.Service
@@ -14,15 +15,29 @@ class TarefaService(
 ) {
 
     fun listar(): List<Tarefa> {
-        return tarefas
+
+        if (tarefas.isNotEmpty()) {
+            return tarefas
+        } else {
+            throw ResourceNotFoundException("Não há tarefas cadastradas")
+        }
     }
 
-    fun listarPorId(id: Long): Tarefa? {
-        return tarefas.find { it.id == id }
+    fun listarPorId(id: Long): Tarefa {
+
+        val tarefa = tarefas.find { it.id == id }
+
+        if (tarefa != null) {
+            return tarefa
+        } else {
+            throw ResourceNotFoundException("Não exite tarefa cadastrada com esse ID")
+        }
     }
 
     fun criar(tarefaDTO: TarefaDTO) {
 
+        // Não é necessário validação da tarefa, já que o programa não vai adicionar uma tarefa
+        // a um usuário que não existe
         val usuario = usuarioService.listarPorId(tarefaDTO.idUsuario)
 
         tarefas = tarefas.plus(
@@ -37,42 +52,36 @@ class TarefaService(
     }
 
     fun atualizar(atualizarTarefaDTO: AtualizarTarefaDTO) {
-        val tarefa = tarefas.find { it.id == atualizarTarefaDTO.id }
+        val tarefa = listarPorId(atualizarTarefaDTO.id)
 
         val tarefaAtualizada = Tarefa(
             id = atualizarTarefaDTO.id,
             titulo = atualizarTarefaDTO.titulo,
             descricao = atualizarTarefaDTO.descricao,
-            usuario = tarefa?.usuario
+            usuario = tarefa.usuario
         )
 
-        if (tarefa != null) {
-            tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
-        }
+        tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
     }
 
     fun atualizar(atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
-        val tarefa = tarefas.find { it.id == atualizarStatusTarefaDTO.id }
+        val tarefa = listarPorId(atualizarStatusTarefaDTO.id)
 
-        if (tarefa != null) {
-            val tarefaAtualizada = Tarefa(
-                id = atualizarStatusTarefaDTO.id,
-                titulo = tarefa.titulo,
-                descricao = tarefa.descricao,
-                usuario = tarefa.usuario,
-                status = atualizarStatusTarefaDTO.status
-            )
+        val tarefaAtualizada = Tarefa(
+            id = atualizarStatusTarefaDTO.id,
+            titulo = tarefa.titulo,
+            descricao = tarefa.descricao,
+            usuario = tarefa.usuario,
+            status = atualizarStatusTarefaDTO.status
+        )
 
-            tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
-        }
+        tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
     }
 
     fun deletar(id: Long) {
-        val tarefa = tarefas.find { it.id == id }
+        val tarefa = listarPorId(id)
 
-        if (tarefa != null) {
-            tarefas = tarefas.minus(tarefa)
-        }
+        tarefas = tarefas.minus(tarefa)
     }
 
 }
