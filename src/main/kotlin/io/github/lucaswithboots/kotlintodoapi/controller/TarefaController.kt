@@ -6,6 +6,8 @@ import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import io.github.lucaswithboots.kotlintodoapi.service.TarefaService
 import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -25,18 +27,23 @@ class TarefaController(
     }
 
     @PostMapping
-    fun criar(@RequestBody @Valid tarefaDTO: TarefaDTO) {
-        service.criar(tarefaDTO)
+    fun criar(
+        @RequestBody @Valid tarefaDTO: TarefaDTO
+    ): ResponseEntity<Tarefa> {
+        val tarefa = service.criar(tarefaDTO)
+        return ResponseEntity.status(HttpStatus.CREATED).body(tarefa)
     }
 
     @PutMapping
-    fun atualizar(@RequestBody @Valid atualizarTarefaDTO: AtualizarTarefaDTO) {
-        service.atualizar(atualizarTarefaDTO)
+    fun atualizar(@RequestBody @Valid atualizarTarefaDTO: AtualizarTarefaDTO): ResponseEntity<Tarefa> {
+        val tarefa = service.atualizar(atualizarTarefaDTO)
+        return ResponseEntity.status(HttpStatus.OK).body(tarefa)
     }
 
     @PutMapping("/status")
-    fun atualizar(@RequestBody @Valid atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
-        service.atualizar(atualizarStatusTarefaDTO)
+    fun atualizar(@RequestBody @Valid atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO): ResponseEntity<Tarefa> {
+        val tarefa = service.atualizar(atualizarStatusTarefaDTO)
+        return ResponseEntity.status(HttpStatus.OK).body(tarefa)
     }
 
     @DeleteMapping("/{id}")

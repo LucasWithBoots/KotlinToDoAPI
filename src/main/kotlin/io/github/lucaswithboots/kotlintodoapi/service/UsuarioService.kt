@@ -30,17 +30,21 @@ class UsuarioService(
         }
     }
 
-    fun criar(usuarioDTO: UsuarioDTO) {
-        usuarios = usuarios.plus(
-            Usuario(
-                id = usuarios.count().toLong() + 1,
-                nome = usuarioDTO.nome,
-                email = usuarioDTO.email
-            )
+    fun criar(usuarioDTO: UsuarioDTO): Usuario {
+        val usuario = Usuario(
+            id = usuarios.count().toLong() + 1,
+            nome = usuarioDTO.nome,
+            email = usuarioDTO.email
         )
+
+        usuarios = usuarios.plus(
+            usuario
+        )
+
+        return usuario
     }
 
-    fun atualizar(atualizarUsuarioDTO: AtualizarUsuarioDTO) {
+    fun atualizar(atualizarUsuarioDTO: AtualizarUsuarioDTO): Usuario {
         val usuario = listarPorId(atualizarUsuarioDTO.id)
 
         val usuarioAtualizado = Usuario(
@@ -50,6 +54,8 @@ class UsuarioService(
         )
 
         usuarios = usuarios.minus(usuario).plus(usuarioAtualizado)
+
+        return usuarioAtualizado
     }
 
     fun deletar(id: Long) {

@@ -6,6 +6,8 @@ import io.github.lucaswithboots.kotlintodoapi.model.Usuario
 import io.github.lucaswithboots.kotlintodoapi.service.UsuarioService
 import io.github.lucaswithboots.kotlintodoapi.service.UsuarioTarefaService
 import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -26,13 +28,15 @@ class UsuarioControler(
     }
 
     @PostMapping
-    fun criar(@RequestBody @Valid usuarioDTO: UsuarioDTO) {
-        service.criar(usuarioDTO)
+    fun criar(@RequestBody @Valid usuarioDTO: UsuarioDTO): ResponseEntity<Usuario> {
+        val usuario = service.criar(usuarioDTO)
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuario)
     }
 
     @PutMapping()
-    fun atualizar(@RequestBody atualizarUsuarioDTO: AtualizarUsuarioDTO) {
-        service.atualizar(atualizarUsuarioDTO)
+    fun atualizar(@RequestBody atualizarUsuarioDTO: AtualizarUsuarioDTO): ResponseEntity<Usuario> {
+        val usuario = service.atualizar(atualizarUsuarioDTO)
+        return ResponseEntity.status(HttpStatus.OK).body(usuario)
     }
 
     @DeleteMapping("/{id}")
