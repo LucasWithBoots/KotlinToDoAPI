@@ -4,13 +4,15 @@ import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarUsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.UsuarioDTO
 import io.github.lucaswithboots.kotlintodoapi.model.Usuario
 import io.github.lucaswithboots.kotlintodoapi.service.UsuarioService
+import io.github.lucaswithboots.kotlintodoapi.service.UsuarioTarefaService
 import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/usuario")
 class UsuarioControler(
-    private val service: UsuarioService
+    private val service: UsuarioService,
+    private val serviceUsuarioTarefaService: UsuarioTarefaService
 ) {
 
     @GetMapping
@@ -35,7 +37,8 @@ class UsuarioControler(
 
     @DeleteMapping("/{id}")
     fun deletar(@PathVariable id: Long) {
-        service.deletar(id)
+        // Deletar um usuário deleta todas suas tarefas automaticamente
+        serviceUsuarioTarefaService.deletar(id)
     }
 
 }

@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class UsuarioService(
-    private var usuarios: List<Usuario> = listOf()
+    private var usuarios: List<Usuario> = listOf(),
+    //private var tarefaService: TarefaService
 ) {
     fun listar(): List<Usuario> {
 
@@ -53,6 +54,8 @@ class UsuarioService(
 
     fun deletar(id: Long) {
         val usuario = listarPorId(id)
+
+//        tarefaService.deletarPorUsuario(id)
 
         usuarios = usuarios.minus(usuario)
     }

@@ -84,4 +84,8 @@ class TarefaService(
         tarefas = tarefas.minus(tarefa)
     }
 
+    fun deletarPorUsuario(idUsuario: Long) {
+        tarefas = tarefas.filter { it.usuario.id != idUsuario }
+    }
+
 }

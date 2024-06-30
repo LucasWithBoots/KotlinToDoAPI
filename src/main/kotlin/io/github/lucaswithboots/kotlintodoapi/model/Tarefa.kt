@@ -7,6 +7,6 @@ data class Tarefa(
     val titulo: String,
     val descricao: String,
     val dataDeCriacao: LocalDateTime = LocalDateTime.now(),
-    val usuario: Usuario?,
+    val usuario: Usuario,
     var status: StatusTarefa = StatusTarefa.PENDENTE
 )
