@@ -25,7 +25,7 @@ class UsuarioService(
         if (usuario != null) {
             return usuario
         } else {
-            throw ResourceNotFoundException("Usuário não cadastrado")
+            throw ResourceNotFoundException("Não exite usuário cadastrado com esse ID")
         }
     }
 

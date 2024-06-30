@@ -30,7 +30,7 @@ class TarefaService(
         if (tarefa != null) {
             return tarefa
         } else {
-            throw ResourceNotFoundException("Tarefa não cadastrada")
+            throw ResourceNotFoundException("Não exite tarefa cadastrada com esse ID")
         }
     }
 
