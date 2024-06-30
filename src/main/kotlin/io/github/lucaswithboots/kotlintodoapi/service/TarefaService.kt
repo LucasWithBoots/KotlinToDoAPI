@@ -34,24 +34,27 @@ class TarefaService(
         }
     }
 
-    fun criar(tarefaDTO: TarefaDTO) {
+    fun criar(tarefaDTO: TarefaDTO): Tarefa {
 
         // Não é necessário validação da tarefa, já que o programa não vai adicionar uma tarefa
         // a um usuário que não existe
         val usuario = usuarioService.listarPorId(tarefaDTO.idUsuario)
+        val tarefa = Tarefa(
+            id = tarefas.size.toLong() + 1,
+            titulo = tarefaDTO.titulo,
+            descricao = tarefaDTO.descricao,
+            usuario = usuario,
+            status = StatusTarefa.PENDENTE
+        )
 
         tarefas = tarefas.plus(
-            Tarefa(
-                id = tarefas.size.toLong() + 1,
-                titulo = tarefaDTO.titulo,
-                descricao = tarefaDTO.descricao,
-                usuario = usuario,
-                status = StatusTarefa.PENDENTE
-            )
+            tarefa
         )
+
+        return tarefa
     }
 
-    fun atualizar(atualizarTarefaDTO: AtualizarTarefaDTO) {
+    fun atualizar(atualizarTarefaDTO: AtualizarTarefaDTO): Tarefa {
         val tarefa = listarPorId(atualizarTarefaDTO.id)
 
         val tarefaAtualizada = Tarefa(
@@ -62,9 +65,11 @@ class TarefaService(
         )
 
         tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
+
+        return tarefaAtualizada
     }
 
-    fun atualizar(atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
+    fun atualizar(atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO): Tarefa {
         val tarefa = listarPorId(atualizarStatusTarefaDTO.id)
 
         val tarefaAtualizada = Tarefa(
@@ -76,6 +81,8 @@ class TarefaService(
         )
 
         tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
+
+        return tarefaAtualizada
     }
 
     fun deletar(id: Long) {
