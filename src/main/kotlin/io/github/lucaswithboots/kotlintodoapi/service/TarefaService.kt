@@ -36,8 +36,6 @@ class TarefaService(
 
     fun criar(tarefaDTO: TarefaDTO): Tarefa {
 
-        // Não é necessário validação da tarefa, já que o programa não vai adicionar uma tarefa
-        // a um usuário que não existe
         val usuario = usuarioService.listarPorId(tarefaDTO.idUsuario)
         val tarefa = Tarefa(
             id = tarefas.size.toLong() + 1,
