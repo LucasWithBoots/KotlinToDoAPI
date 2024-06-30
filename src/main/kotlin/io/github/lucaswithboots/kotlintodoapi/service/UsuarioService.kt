@@ -19,7 +19,7 @@ class UsuarioService(
         }
     }
 
-    fun listarPorId(id: Long): Usuario? {
+    fun listarPorId(id: Long): Usuario {
         val usuario = usuarios.find { it.id == id }
 
         if (usuario != null) {
@@ -42,25 +42,19 @@ class UsuarioService(
     fun atualizar(atualizarUsuarioDTO: AtualizarUsuarioDTO) {
         val usuario = listarPorId(atualizarUsuarioDTO.id)
 
-        if (usuario != null) {
-            val usuarioAtualizado = Usuario(
-                id = atualizarUsuarioDTO.id,
-                nome = atualizarUsuarioDTO.nome,
-                email = atualizarUsuarioDTO.email
-            )
+        val usuarioAtualizado = Usuario(
+            id = atualizarUsuarioDTO.id,
+            nome = atualizarUsuarioDTO.nome,
+            email = atualizarUsuarioDTO.email
+        )
 
-            usuarios = usuarios.minus(usuario).plus(usuarioAtualizado)
-        } else {
-            throw ResourceNotFoundException("Usuário não cadastrado")
-        }
+        usuarios = usuarios.minus(usuario).plus(usuarioAtualizado)
     }
 
     fun deletar(id: Long) {
         val usuario = listarPorId(id)
 
-        if (usuario != null) {
-            usuarios = usuarios.minus(usuario)
-        }
+        usuarios = usuarios.minus(usuario)
     }
 
 

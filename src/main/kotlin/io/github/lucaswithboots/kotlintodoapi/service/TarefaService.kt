@@ -23,7 +23,7 @@ class TarefaService(
         }
     }
 
-    fun listarPorId(id: Long): Tarefa? {
+    fun listarPorId(id: Long): Tarefa {
 
         val tarefa = tarefas.find { it.id == id }
 
@@ -54,46 +54,34 @@ class TarefaService(
     fun atualizar(atualizarTarefaDTO: AtualizarTarefaDTO) {
         val tarefa = listarPorId(atualizarTarefaDTO.id)
 
-        if (tarefa != null) {
-            val tarefaAtualizada = Tarefa(
-                id = atualizarTarefaDTO.id,
-                titulo = atualizarTarefaDTO.titulo,
-                descricao = atualizarTarefaDTO.descricao,
-                usuario = tarefa.usuario
-            )
-            tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
+        val tarefaAtualizada = Tarefa(
+            id = atualizarTarefaDTO.id,
+            titulo = atualizarTarefaDTO.titulo,
+            descricao = atualizarTarefaDTO.descricao,
+            usuario = tarefa.usuario
+        )
 
-        } else {
-            throw ResourceNotFoundException("Tarefa não cadastrada")
-        }
+        tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
     }
 
     fun atualizar(atualizarStatusTarefaDTO: AtualizarStatusTarefaDTO) {
         val tarefa = listarPorId(atualizarStatusTarefaDTO.id)
 
-        if (tarefa != null) {
-            val tarefaAtualizada = Tarefa(
-                id = atualizarStatusTarefaDTO.id,
-                titulo = tarefa.titulo,
-                descricao = tarefa.descricao,
-                usuario = tarefa.usuario,
-                status = atualizarStatusTarefaDTO.status
-            )
+        val tarefaAtualizada = Tarefa(
+            id = atualizarStatusTarefaDTO.id,
+            titulo = tarefa.titulo,
+            descricao = tarefa.descricao,
+            usuario = tarefa.usuario,
+            status = atualizarStatusTarefaDTO.status
+        )
 
-            tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
-        } else {
-            throw ResourceNotFoundException("Tarefa não cadastrada")
-        }
+        tarefas = tarefas.minus(tarefa).plus(tarefaAtualizada)
     }
 
     fun deletar(id: Long) {
         val tarefa = listarPorId(id)
 
-        if (tarefa != null) {
-            tarefas = tarefas.minus(tarefa)
-        } else {
-            throw ResourceNotFoundException("Tarefa não cadastrada")
-        }
+        tarefas = tarefas.minus(tarefa)
     }
 
 }
