@@ -7,8 +7,8 @@ class UsuarioTarefaService(
     private val tarefaService: TarefaService,
     private val usuarioService: UsuarioService
 ) {
-    fun deletar(id: Long) {
-        tarefaService.deletarPorUsuario(id)
-        usuarioService.deletar(id)
-    }
+//    fun deletar(id: Long) {
+//        tarefaService.deletarPorUsuario(id)
+//        usuarioService.deletar(id)
+//    }
 }

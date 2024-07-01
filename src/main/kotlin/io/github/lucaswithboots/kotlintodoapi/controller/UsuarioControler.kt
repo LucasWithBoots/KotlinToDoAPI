@@ -8,6 +8,7 @@ import io.github.lucaswithboots.kotlintodoapi.service.UsuarioTarefaService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -28,21 +29,24 @@ class UsuarioControler(
     }
 
     @PostMapping
+    @Transactional
     fun criar(@RequestBody @Valid usuarioDTO: UsuarioDTO): ResponseEntity<Usuario> {
         val usuario = service.criar(usuarioDTO)
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario)
     }
 
     @PutMapping()
+    @Transactional
     fun atualizar(@RequestBody atualizarUsuarioDTO: AtualizarUsuarioDTO): ResponseEntity<Usuario> {
         val usuario = service.atualizar(atualizarUsuarioDTO)
         return ResponseEntity.status(HttpStatus.OK).body(usuario)
     }
 
-    @DeleteMapping("/{id}")
-    fun deletar(@PathVariable id: Long) {
-        // Deletar um usuário deleta todas suas tarefas automaticamente
-        serviceUsuarioTarefaService.deletar(id)
-    }
+//    @DeleteMapping("/{id}")
+//    @Transactional
+//    fun deletar(@PathVariable id: Long) {
+//        // Deletar um usuário deleta todas suas tarefas automaticamente
+//        serviceUsuarioTarefaService.deletar(id)
+//    }
 
 }

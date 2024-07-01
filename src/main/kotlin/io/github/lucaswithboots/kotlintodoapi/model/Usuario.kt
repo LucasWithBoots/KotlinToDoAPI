@@ -9,8 +9,8 @@ import java.time.LocalDateTime
 @Entity
 data class Usuario(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-    val nome: String,
-    val email: String,
+    val id: Long = 0,
+    var nome: String,
+    var email: String,
     val dataDeCriacao: LocalDateTime = LocalDateTime.now()
 )
