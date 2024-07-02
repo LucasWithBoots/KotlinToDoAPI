@@ -9,6 +9,7 @@ data class Tarefa(
     val id: Long = 0,
     var titulo: String,
     var descricao: String,
+    @Column(name = "datadecriacao")
     val dataDeCriacao: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
     val usuario: Usuario,
