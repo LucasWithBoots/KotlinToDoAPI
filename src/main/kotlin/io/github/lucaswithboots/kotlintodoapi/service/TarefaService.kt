@@ -57,10 +57,4 @@ class TarefaService(
     fun deletar(id: Long) {
         repository.deleteById(id)
     }
-
-//    fun deletarPorUsuario(idUsuario: Long) {
-//
-//        tarefas = tarefas.filter { it.usuario.id != idUsuario }
-//    }
-
 }
