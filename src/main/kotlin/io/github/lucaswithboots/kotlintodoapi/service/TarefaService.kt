@@ -16,9 +16,9 @@ class TarefaService(
 
     fun listar(status: StatusTarefa?): List<Tarefa> {
         return if(status != null){
-            repository.findByStatus(status)
+            repository.findByStatusOrderById(status)
         } else {
-            repository.findAll()
+            repository.findByOrderById()
         }
     }
 
