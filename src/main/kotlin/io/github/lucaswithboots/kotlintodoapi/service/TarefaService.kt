@@ -14,8 +14,12 @@ class TarefaService(
     private val usuarioService: UsuarioService
 ) {
 
-    fun listar(): List<Tarefa> {
-        return repository.findAll()
+    fun listar(status: StatusTarefa?): List<Tarefa> {
+        return if(status != null){
+            repository.findByStatus(status)
+        } else {
+            repository.findAll()
+        }
     }
 
     fun listarPorId(id: Long): Tarefa {
@@ -27,7 +31,6 @@ class TarefaService(
 
         val tarefa = Tarefa(
             titulo = tarefaDTO.titulo,
-            descricao = tarefaDTO.descricao,
             usuario = usuario,
             status = StatusTarefa.PENDENTE
         )
@@ -41,7 +44,6 @@ class TarefaService(
         val tarefa = listarPorId(atualizarTarefaDTO.id)
 
         tarefa.titulo = atualizarTarefaDTO.titulo
-        tarefa.descricao = atualizarTarefaDTO.descricao
 
         return tarefa
     }

@@ -3,6 +3,7 @@ package io.github.lucaswithboots.kotlintodoapi.controller
 import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarStatusTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.AtualizarTarefaDTO
 import io.github.lucaswithboots.kotlintodoapi.dto.TarefaDTO
+import io.github.lucaswithboots.kotlintodoapi.model.StatusTarefa
 import io.github.lucaswithboots.kotlintodoapi.model.Tarefa
 import io.github.lucaswithboots.kotlintodoapi.service.TarefaService
 import jakarta.validation.Valid
@@ -18,8 +19,8 @@ class TarefaController(
 ) {
 
     @GetMapping
-    fun listar(): List<Tarefa> {
-        return service.listar()
+    fun listar(@RequestParam(required=false) status: StatusTarefa?): List<Tarefa> {
+        return service.listar(status)
     }
 
     @GetMapping("/{id}")

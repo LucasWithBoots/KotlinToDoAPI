@@ -8,7 +8,6 @@ data class Tarefa(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     var titulo: String,
-    var descricao: String,
     @Column(name = "datadecriacao")
     val dataDeCriacao: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
