@@ -10,8 +10,5 @@ data class AtualizarTarefaDTO(
     val id: Long,
 
     @field:NotBlank
-    val titulo: String,
-
-    @field:NotBlank
-    val descricao: String,
+    val titulo: String
 )

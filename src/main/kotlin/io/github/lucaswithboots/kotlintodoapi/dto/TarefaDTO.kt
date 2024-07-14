@@ -11,8 +11,5 @@ data class TarefaDTO(
     val idUsuario: Long,
 
     @field:NotBlank
-    val titulo: String,
-
-    @field:NotBlank
-    val descricao: String
+    val titulo: String
 )

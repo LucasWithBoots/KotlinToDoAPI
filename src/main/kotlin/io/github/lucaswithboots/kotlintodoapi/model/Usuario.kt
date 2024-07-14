@@ -1,10 +1,14 @@
 package io.github.lucaswithboots.kotlintodoapi.model
 
+import jakarta.persistence.*
 import java.time.LocalDateTime
 
+@Entity
 data class Usuario(
-    val id: Long,
-    val nome: String,
-    val email: String,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0,
+    var nome: String,
+    var email: String,
+    @Column(name = "datadecriacao")
     val dataDeCriacao: LocalDateTime = LocalDateTime.now()
 )

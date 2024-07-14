@@ -5,7 +5,7 @@ KotlinToDoAPI é uma API REST simples para gerenciar listas de tarefas, constru�
 Este projeto foi feito após a conclusão do curso "API REST com Kotlin e Spring Boot: Camada Web" da Alura, para colocar
 em prática os conceitos que aprendi. 💪
 
-![Skills Usadas](https://skillicons.dev/icons?i=kotlin,spring,postman,idea)
+![Skills Usadas](https://skillicons.dev/icons?i=kotlin,spring,postman,postgres,idea)
 
 ## Funcionalidades
 
