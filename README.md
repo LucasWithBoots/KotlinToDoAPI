@@ -1,11 +1,13 @@
 # KotlinToDoAPI
 
+![Skills Usadas](https://skillicons.dev/icons?i=kotlin,spring,postman,postgres,idea)
+
+https://github.com/user-attachments/assets/55dd4973-56f8-4216-83c3-248f64128e82
+
 KotlinToDoAPI é uma API REST simples para gerenciar listas de tarefas, construída com Kotlin, Spring Boot e PostgreSQL. ✅
 
 Este projeto foi feito após a conclusão do curso "API REST com Kotlin e Spring Boot: Camada Web" da Alura, para colocar
 em prática os conceitos que aprendi. 💪
-
-![Skills Usadas](https://skillicons.dev/icons?i=kotlin,spring,postman,postgres,idea)
 
 [O front-end está em um repositório separado](https://github.com/LucasWithBoots/KotlinToDoAPI-Angular)
 
