@@ -2,7 +2,7 @@
 
 ![Skills Usadas](https://skillicons.dev/icons?i=kotlin,spring,postman,postgres,idea)
 
-https://github.com/user-attachments/assets/55dd4973-56f8-4216-83c3-248f64128e82
+https://github.com/user-attachments/assets/72646a15-bbc7-4b81-8af8-fea8f2f8cac3
 
 KotlinToDoAPI é uma API REST simples para gerenciar listas de tarefas, construída com Kotlin, Spring Boot e PostgreSQL. ✅
 
